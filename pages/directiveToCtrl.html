@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>directiveToCtrl</title>
+</head>
+<body>
+
+<div ng-app="directiveToCtrl">
+    <div ng-controller="dtctrl">
+        <button ng-click="sayHi()">点我sayHi</button><br>
+        <button ng-click="dtctrl.sayHi1()">点我sayHi1</button>
+    </div>
+</div>
+
+<script src="../angular.js"></script>
+<script src="../js/controllers/directiveToCtrl.js"></script>
+
+</body>
+</html>

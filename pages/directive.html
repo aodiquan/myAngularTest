@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>directive</title>
+</head>
+<body>
+
+<div ng-app="directive">
+    演示directive<br>
+    <element></element>
+    <div attr>attribute</div>
+    <div class="class">class</div>
+    <!-- 这个注释特别有讲究，必须开头结尾都有空格，蛋疼。。。-->
+    <!-- directive:comment -->
+
+    <br>演示跟鼠标、键盘的交互
+    <div enter>鼠标划过我提示进入</div>
+
+    <br>演示directive跟controller交互
+    <div ng-controller="direCtrl">
+        <div diretoctrl="myFunction()">鼠标划过我执行controller中的方法</div>
+    </div>
+
+    <br>演示2个directive之间互相调用方法<br>
+    <direcone directwo>调用direc1的方法</direcone>
+
+    <br><br>演示共享scope的情况，即不指定directive的scope属性<br>
+
+    <div sharedirective1></div>
+    <div sharedirective1></div>
+    <div sharedirective1></div>
+
+    <br><br>演示独立scope的情况，即指定directive的scope属性<br>
+
+    <div isolated-directive></div>
+    <div isolated-directive></div>
+    <div isolated-directive></div>
+
+    <br>演示scope @的效果，单向绑定<br>
+
+    <div ng-controller="controller2">
+        <div>
+            <div>父scope：
+                <div>Say：{{name}}
+                    <br>改变父scope的name：
+                    <input type="text" value="" ng-model="name"/>
+                </div>
+            </div>
+            <!-- 正常来说应该是父改子也改，但是子改了以后父就影响不了子了，
+            之所以变成子改了之后父依然能改子，因为@的效果是跟name属性挂钩-->
+            <div>隔离scope：
+                <div isolated-directive1 name="{{name}}"></div>
+            </div>
+            <div>隔离scope（失败的做法）：
+                <div isolated-directive1 name="name"></div>
+            </div>
+        </div>
+    </div>
+
+    <br>演示scope =的效果，双向绑定<br>
+
+    <div ng-controller="controller3">
+        <div>父scope：
+            <div>Say：{{user.name}}
+                <br>改变父scope的name：
+                <input type="text" value="" ng-model="user.name"/>
+            </div>
+        </div>
+        <div>隔离scope：
+            <div isolated-directive2 user="user"></div>
+        </div>
+        <!-- （晕，下面这种做法还报错了）个人理解下面这种做法之所以失败，是因为在input输入框中输入之后，
+        会在自己的作用域中生成自己的user数据，导致子改了之后父没有变化，双向绑定没有效果，所以不能让双括号生效-->
+        <!--<div>隔离scope（失败的做法）：-->
+        <!--<div isolated-directive2 user="{{user}}"></div>-->
+        <!--</div>-->
+    </div>
+
+    <br>演示scope &的效果，调用父scope方法<br>
+
+    <div ng-controller="controller4">
+        <div>父scope：
+            <div>Say：{{value}}</div>
+        </div>
+        <div>隔离scope：
+            <div isolated-directive3 action="click(value)"></div>
+        </div>
+    </div>
+
+    <br>演示模板嵌入效果<br>
+    非嵌入（被覆盖）：<br>
+    <not-transclude>
+        <div>
+            原始内容
+        </div>
+    </not-transclude>
+    嵌入（不会被覆盖）
+    <is-transclude>
+        <div>
+            原始内容
+        </div>
+    </is-transclude>
+
+    <br>一个directive的综合应用<br>
+    <input type="text" ng-model="model.title"><br>
+    <input type="text" ng-model="model.content">
+    <zippy title="{{model.title}}">
+        this is {{model.content}}
+    </zippy>
+
+    <script src="../angular.js"></script>
+    <script src="../js/directive/directive.js"></script>
+</div>
+
+</body>
+</html>

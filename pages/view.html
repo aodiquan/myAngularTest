@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view</title>
+</head>
+<body>
+
+<div ng-app="view">
+    可以在地址栏后面添加信息，显示出来<br>
+    <ng-view></ng-view>
+
+    <div ng-controller="errerReportCtrl"></div>
+
+    <!--演示directive显示promise错误信息-->
+    <error></error>
+</div>
+
+<script src="../angular.js"></script>
+<script src="../angular-route.js"></script>
+<script src="../js/view/view.js"></script>
+
+</body>
+</html>

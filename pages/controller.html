@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>controller</title>
+</head>
+<body>
+
+<div ng-app="controller">
+    演示从controller中取数据
+    <div ng-controller="firstCtrl">
+        <h1>{{data.message}}</h1>
+    </div>
+
+    演示一下作用域的不同效果<br>
+    <font color="red">情景一：父子永远相等</font><br>
+    <!-- 个人理解，情景一的发生跟data.message中的.有关，会导致子的data.message也会取到父的data.message，
+    如果把data.message换成data或者message都会变成情景二 -->
+    parent <input type="text" ng-model="data.message">
+
+    <h1>{{data.message}}</h1>
+
+    <div ng-controller="secondCtrl">
+        <input type="text" ng-model="data.message">
+
+        <h1>{{data.message}}</h1>
+    </div>
+
+    <div ng-controller="thirdCtrl">
+        <input type="text" ng-model="data.message">
+
+        <h1>{{data.message}}</h1>
+    </div>
+
+    <font color="red">情景二：刚开始父子相等，但是子变化之后脱离父的关系</font><br>
+    parent <input type="text" ng-model="message">
+
+    <h1>{{message}}</h1>
+
+    <div ng-controller="fourCtrl">
+        <input type="text" ng-model="message">
+
+        <h1>{{message}}</h1>
+    </div>
+
+    <div ng-controller="fiveCtrl">
+        <input type="text" ng-model="message">
+
+        <h1>{{message}}</h1>
+    </div>
+
+    controller间共享数据，不推荐使用上面的方式，推荐使用factory共享<br>
+
+    <div ng-controller="sixCtrl">
+        测试调用js中定义的方法-><input type="text" ng-model="data.message">
+
+        <h1>{{data.message}}</h1>
+    </div>
+
+    <div ng-controller="sevenCtrl">
+        <h1>{{data.message}}</h1>
+        controller调用js中定义的方法
+        <h1>{{reverseMessage(data.message)}}</h1>
+    </div>
+
+
+</div>
+
+<script src="../angular.js"></script>
+<script src="../js/controllers/controller.js"></script>
+
+</body>
+</html>
