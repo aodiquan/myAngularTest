@@ -1,6 +1,7 @@
 /// <reference path="../typings/angularjs/angular.d.ts" />
 /// <reference path="../typings/jquery/jquery.d.ts" />
 // 这里的$scope指的是页面中firstCtrl标签包含的部分
+//相对的，$rootScope指的是ng-app包住的部分，这意味着在angular中$rootScope是万物之源
 angular.module('controller', [])
     .controller('firstCtrl', function ($scope) {
         $scope.data = {

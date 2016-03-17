@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>controllerAs</title>
+</head>
+<body>
+<div ng-app="controllerAs">
+    演示1.2带来的新语法Controller as<br>
+    <!-- 优点是在html上运用别名，当嵌套多层时可以直观的看到是哪个controller对应的哪个model-->
+    <div ng-controller="controllerAsCtrl as ctrl">
+        <div>{{ctrl.content}}</div>
+    </div>
+</div>
+
+<script src="../angular.js"></script>
+<script src="../angular-route.js"></script>
+<script src="../js/controllers/controllerAs.js"></script>
+</body>
+</html>

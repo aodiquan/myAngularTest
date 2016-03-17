@@ -57,11 +57,12 @@ function viewCtrl($scope, $routeParams, $q) {
     }
 }
 
-var errerReportCtrl = angular.module('view').controller('errerReportCtrl', function ($scope) {
-    $scope.$on("$routeChangeError", function (event, current, previous, rejection) {
-        console.info(rejection);
-    })
-});
+var errerReportCtrl = angular.module('view')
+    .controller('errerReportCtrl', function ($scope) {
+        $scope.$on("$routeChangeError", function (event, current, previous, rejection) {
+            console.info(rejection);
+        })
+    });
 function loadData($q, $timeout) {
     var defer = $q.defer();
     $timeout(function () {

@@ -44,17 +44,15 @@
             <div>父scope：
                 <div>Say：{{name}}
                     <br>改变父scope的name：
-                    <input type="text" value="" ng-model="name"/>
+                    <input type="text" value="" ng-model="parentName"/>
                 </div>
             </div>
-            <!-- 正常来说应该是父改子也改，但是子改了以后父就影响不了子了，
-            之所以变成子改了之后父依然能改子，因为@的效果是跟name属性挂钩-->
             <div>隔离scope：
-                <div isolated-directive1 name="{{name}}"></div>
+                <div isolated-directive1 name="{{parentName}}"></div>
             </div>
-            <div>隔离scope（失败的做法）：
-                <div isolated-directive1 name="name"></div>
-            </div>
+            <!--<div>隔离scope（失败的做法）：-->
+                <!--<div isolated-directive1 name="name"></div>-->
+            <!--</div>-->
         </div>
     </div>
 
@@ -70,8 +68,7 @@
         <div>隔离scope：
             <div isolated-directive2 user="user"></div>
         </div>
-        <!-- （晕，下面这种做法还报错了）个人理解下面这种做法之所以失败，是因为在input输入框中输入之后，
-        会在自己的作用域中生成自己的user数据，导致子改了之后父没有变化，双向绑定没有效果，所以不能让双括号生效-->
+        <!-- （晕，下面这种做法还报错了）-->
         <!--<div>隔离scope（失败的做法）：-->
         <!--<div isolated-directive2 user="{{user}}"></div>-->
         <!--</div>-->
