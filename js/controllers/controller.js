@@ -1,3 +1,5 @@
+/// <reference path="../typings/angularjs/angular.d.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
 // 这里的$scope指的是页面中firstCtrl标签包含的部分
 angular.module('controller', [])
     .controller('firstCtrl', function ($scope) {

@@ -1,3 +1,5 @@
+/// <reference path="../typings/angularjs/angular.d.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
 /**
  * ng 中对指令的解析与执行过程是这样的：
 

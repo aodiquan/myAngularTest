@@ -1,3 +1,5 @@
+/// <reference path="../typings/angularjs/angular.d.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
 // 类似于管道，之所以需要返回function，他会传text进来，然后调用这个function，实现管道的效果
 angular.module('filter', [])
     .filter("reverse", function () {
